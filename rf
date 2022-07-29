@@ -1,0 +1,27 @@
+import os
+import re
+from exif import Image
+
+os.chdir("C:/my_programs/from_flesh/")
+print (os.getcwd())
+my_path = "C:/my_programs/from_flesh/"
+
+files = os.listdir()
+print(files)
+
+# work_image=[]
+# for file in files:
+# 	work_file = Image(file)
+# 	work_image.append(work_file)
+
+# print(work_image)
+
+def parse_work_image(exif_text):
+	'''парсит полученные дату и время из метаданных'''
+	result = re.match(r"([\d]{4})([\d]{2})", exif_text)
+	return print(result.group(0))
+
+for image in files:
+	work_image = Image(image)
+	parse_work_image(work_image.datetime_original)
+	continue
